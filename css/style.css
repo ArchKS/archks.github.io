@@ -28,6 +28,7 @@ a:hover {
 }
 .hd {
   width: 55%;
+  margin-left: 15%;
   height: 100%;
   margin: auto;
   cursor: pointer;
@@ -164,6 +165,7 @@ a {
   justify-content: center;
   align-items: center;
   margin-bottom: 10px;
+  min-width: 700px;
 }
 .title-wrapper a {
   display: flex;
