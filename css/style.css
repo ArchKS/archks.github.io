@@ -165,7 +165,6 @@ a {
   justify-content: center;
   align-items: center;
   margin-bottom: 10px;
-  min-width: 700px;
 }
 .title-wrapper a {
   display: flex;

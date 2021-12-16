@@ -60,7 +60,7 @@
     #content-wrapper,
     p,
     li {
-        width: 86%;
+        width: 100%;
         font-size: 0.8rem !important;
     }
     #share {
