@@ -1,5 +1,10 @@
 /* 标题下划线 */
 
+#bodyx {
+    margin-top: 80px;
+    padding-bottom: 80px;
+}
+
 .hd .list {
     position: relative;
     display: flex;
@@ -8,6 +13,17 @@
     width: 100%;
     overflow: hidden;
     z-index: 100;
+    font-size: 18px;
+    padding-left: 25px;
+    padding-right: 25px;
+    cursor: pointer;
+}
+
+.hd .list:hover {
+    color: lightcoral;
+    font-weight: bolder;
+    transition: all .2s linear;
+    filter: blur(1px);
 }
 
 #content-wrapper {
@@ -56,6 +72,10 @@
     overflow: hidden;
 }
 
+html {
+    height: 100%;
+}
+
 @media screen and (max-width: 768px) {
     #content-wrapper,
     p,
@@ -69,9 +89,9 @@
     #gohome {
         width: 18rem;
         height: 10rem;
-        top: -6rem;
+        top: -5rem;
         left: -9rem;
-        position: absolute;
+        position: fixed;
         font-size: 1rem;
     }
 }
@@ -80,3 +100,43 @@
 /* td {
     white-space: nowrap;
 } */
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+    font-size: 14px;
+    color: #8b8686;
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+    /* animation: move 10s linear infinite; */
+}
+
+.footer:hover {
+    opacity: 0;
+    border: 1px solid #fff;
+}
+
+@keyframes move {
+    0% {
+        transform: translate(100%, 0);
+    }
+    100% {
+        transform: translate(-110%, 0);
+    }
+    /* 50% {
+        transform: translate(-50%, 0);
+    }
+    75% {
+        transform: translate(-100%, 0);
+    }
+    100% {
+        transform: translate(-50%, 0);
+    } */
+}
