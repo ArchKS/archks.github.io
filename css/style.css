@@ -630,7 +630,8 @@ a {
 }
 .post-content blockquote {
   border-left: 0.25em solid #798ba9;
-  color: #798ba9;
+  color: #fff;
+  font-weight: bold;
   padding: 0 1em;
   margin-left: 13px;
 }
