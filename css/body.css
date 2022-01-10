@@ -19,13 +19,6 @@
     cursor: pointer;
 }
 
-.hd .list:hover {
-    color: lightcoral;
-    font-weight: bolder;
-    transition: all .2s linear;
-    filter: blur(1px);
-}
-
 #content-wrapper {
     font-size: 16px;
     font-weight: 200;
@@ -116,11 +109,6 @@ html {
     cursor: pointer;
     user-select: none;
     /* animation: move 10s linear infinite; */
-}
-
-.footer:hover {
-    opacity: 0;
-    border: 1px solid #fff;
 }
 
 @keyframes move {
