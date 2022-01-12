@@ -12,6 +12,10 @@
     cursor: pointer;
 }
 
+body {
+    overflow-x: hidden;
+}
+
 #content-wrapper {
     font-size: 16px;
     font-weight: 200;
