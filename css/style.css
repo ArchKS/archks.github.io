@@ -180,6 +180,9 @@ a:hover {
   right: 0;
   width: 0;
 }
+img {
+  max-width: 400px;
+}
 .posts .replay-btn {
   background-color: #696969;
   width: 40px;
