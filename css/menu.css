@@ -43,7 +43,8 @@
 }
 
 .cl-wrapper li>.cl-link.cl-link-active {
-    color: rgba(66, 185, 131, 0.9) !important;
+    /* color: rgba(66, 185, 131, 0.9) !important; */
+    color: black;
     transition: .2s;
 }
 

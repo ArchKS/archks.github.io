@@ -74,8 +74,8 @@ function initMenu() {
     // 小屏幕，需要绑定事件
     let menubtn = document.querySelector(".menu-btn");
     let menuContent = document.querySelector(".menu-wrapper");
-    
-    if (window.innerWidth < 1000)  {
+
+    if (window.innerWidth < 1000) {
         return;
         menubtn.onclick = function (e) {
             e.stopPropagation();
@@ -136,7 +136,7 @@ function share() {
 share();
 
 
-function initREM(){
+function initREM() {
     let htmlElement = document.querySelector("html");
     let winWidth = window.innerWidth;
     htmlElement.style.fontSize = winWidth / 100;
@@ -145,6 +145,9 @@ function initREM(){
 initREM();
 
 
-function goHome(){
+function goHome() {
     let gohomeElement = document.querySelector("#gohome");
 }
+
+const heti = new Heti('.heti');
+heti.autoSpacing(); // 自动进行中西文混排美化和标点挤压
