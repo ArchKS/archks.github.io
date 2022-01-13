@@ -41,7 +41,7 @@ a:hover {
   position: absolute;
   top: 50%;
   font-size: 12px;
-  letter-spacing: 6rem;
+  letter-spacing: 5rem;
   transform: translate(0, -50%);
   z-index: -1;
   display: flex;
