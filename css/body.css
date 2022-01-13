@@ -97,3 +97,11 @@ h1.headings::before {
     position: absolute;
     bottom: 0;
 }
+
+.hd.list {
+    width: 70%;
+}
+
+.flink.fancy {
+    zoom: .6;
+}
