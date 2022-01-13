@@ -41,7 +41,7 @@ a:hover {
   position: absolute;
   top: 50%;
   font-size: 12px;
-  letter-spacing: 24px;
+  letter-spacing: 6rem;
   transform: translate(0, -50%);
   z-index: -1;
   display: flex;
@@ -54,17 +54,12 @@ a:hover {
 .header-scroll::before {
   content: "判天地之美";
   position: absolute;
-  left: 10px;
+  left: 2rem;
 }
 .header-scroll::after {
   content: '析万物之理';
   position: absolute;
-  right: -10px;
-}
-@media screen and (max-width: 1000px) {
-  .header-scroll {
-    letter-spacing: 20px;
-  }
+  right: -4rem;
 }
 .title_wrapper {
   display: flex;

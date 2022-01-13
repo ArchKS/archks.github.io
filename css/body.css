@@ -105,3 +105,22 @@ h1.headings::before {
 .flink.fancy {
     zoom: .6;
 }
+
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+    .fancy .text {
+        height: 2.5em;
+        line-height: 2.5em;
+    }
+    .fancy::before {
+        /* content: " ";
+        width: 1.5625rem;
+        height: 2px;
+        background: black;
+        top: 50%; */
+        left: 1em;
+        /* position: absolute;
+        transform: translateY(-50%);
+        transform-origin: center;
+        transition: background 0.3s linear, width 0.3s linear; */
+    }
+}

@@ -24,7 +24,8 @@ function share() {
 function initREM() {
     let htmlElement = document.querySelector("html");
     let winWidth = window.innerWidth;
-    htmlElement.style.fontSize = winWidth / 100;
+    htmlElement.style.fontSize = winWidth / 100 + "px";
+    console.log(htmlElement.style.fontSize );
 }
 
 function fmtArcitle() {
