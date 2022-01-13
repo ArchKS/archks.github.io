@@ -23,6 +23,12 @@ body {
     cursor: auto;
 }
 
+@media screen and (max-width: 800px) {
+    #content-wrapper {
+        width: 90% !important;
+    }
+}
+
 #content-wrapper p {
     font-size: inherit;
     font-weight: inherit;

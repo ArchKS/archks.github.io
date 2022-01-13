@@ -180,8 +180,8 @@ a:hover {
   right: 0;
   width: 0;
 }
-img {
-  max-width: 400px;
+.hd.posts img {
+  width: 100%;
 }
 .posts .replay-btn {
   background-color: #696969;
@@ -257,6 +257,30 @@ a {
 }
 .gutter .hljs span.line {
   display: none;
+}
+.image-wrapper {
+  width: 100%;
+  height: 68px;
+  background-color: #fff;
+  display: flex;
+  box-shadow: 0px 2px 7px rgba(0,0,0,0.15);
+  position: relative;
+  transform: translate(0, -100%);
+  position: fixed;
+  transition: all 0.3s ease-in-out;
+}
+.image-wrapper img {
+  width: auto !important;
+  margin: 10px 10px 10px 10px;
+}
+.image-wrapper .fix-title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }
 .highlight table td,
 .highlight table th,
@@ -604,7 +628,7 @@ label.el-checkbox {
 }
 @media screen and (max-width: 800px) {
   .hd {
-    width: 90%;
+    width: 100%;
     margin: auto;
   }
   .posttime {
