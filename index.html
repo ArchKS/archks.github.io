@@ -1,180 +1,399 @@
 <!DOCTYPE html>
-<html lang="zh">
-<!-- 头部 -->
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="renderer" content="webkit">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<link rel="shortcut icon" href=< %=t heme.favicon  >
-<!-- hightlight css -->
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.4.0/styles/monokai-sublime.min.css">
-<script src="//unpkg.com/heti/umd/heti-addon.min.js"></script>
-<link rel="stylesheet" href="//unpkg.com/heti/umd/heti.min.css">
-
-
-
-<script>
-    var _hmt = _hmt || [];
-    (function() {
-        var hm = document.createElement("script");
-        hm.src = "https://hm.baidu.com/hm.js?2a06b3ea85b012b613a5dda6acfb0429";
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(hm, s);
-    })();
-</script>
-
-
-<!-- sharejs -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
-
-
-<title>
-    云芒的博客
-</title>
-<meta name="description" content=< %- theme.description  >
-<meta name="keywords" content=< %- theme.keywords  >
-<!-- 
-<link rel="stylesheet" href="/libs/highlight/styles/monokai-sublime.css">
- -->
-
-<link rel="stylesheet" href="/css/menu.css">
-
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="IT 计算机 前端 运维 记录 随笔 云芒 探索">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="Zendu">
     
-<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
-
+    <title>
         
+        Zendu
+    </title>
+    
 <link rel="stylesheet" href="/css/style.css">
 
-            
-<link rel="stylesheet" href="/css/body.css">
+    <link rel="shortcut icon" href="/images/logo.svg">
+    
+<link rel="stylesheet" href="/css/font-awesome.min.css">
 
-                <link rel="stylesheet" href="//at.alicdn.com/t/font_2807821_y0sdgmiswee.css">
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"archks.github.io","root":"/","language":"zh-CN"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":true,"init_open":true},"style":{"primary_color":"#0066CC","avatar":"/images/avatar.jpg","favicon":"/images/logo.svg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":false,"scale":false},"first_screen":{"enable":true,"background_img":"/images/bg.svg","description":"判天地之美，析万物之理。"},"scroll":{"progress_bar":{"enable":true},"percent":{"enable":true}}},"local_search":{"enable":false,"preload":false},"code_copy":{"enable":true,"style":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"version":"3.4.5"};
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"};
+  </script>
+<meta name="generator" content="Hexo 5.2.0"></head>
 
 
-                <style type="text/css">
-                    .v * {
-                        color: #698fca;
-                    }
-                    
-                    .v .vlist .vcard .vhead .vsys {
-                        color: #3a3e4a;
-                    }
-                    
-                    .v .vlist .vcard .vh .vmeta .vat {
-                        color: #638fd5;
-                    }
-                    
-                    .v .vlist .vcard .vhead .vnick {
-                        color: #6ba1ff;
-                    }
-                    
-                    .v a {
-                        color: #8696b1;
-                    }
-                    
-                    .v .vlist .vcard .vhead .vnick:hover {
-                        color: #669bfc;
-                    }
-                </style>
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
 
-                <body id="body">
-                    
-<div class="hd logodiv">
-<div class="header-scroll">
+    
 </div>
 
- <img src="/img/shine.png" class="logopng" alt="logo"> 
-    <!-- <div class="logot">
-        <div class="title-text">
-            云芒
+
+<main class="page-container">
+
+    
+        <div class="first-screen-container flex-center fade-in-down-animation">
+    <div class="content flex-center">
+        <div class="description">
+            判天地之美，析万物之理。
+        </div>
+        
+    </div>
+</div>
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+
+    <div class="header-content has-first-screen">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                Zendu
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class="active"
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
         </div>
     </div>
-    -->
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class="active"
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="home-content-container fade-in-down-animation">
+    <ul class="home-article-list">
+        
+            <li class="home-article-item">
+
+                
+                    <i class="fas fa-thumbtack top-icon"></i>
+                
+
+                <h3 class="home-article-title">
+                    <a href="/2017/09/27/booklist/">
+                        《年度书单》
+                    </a>
+                </h3>
+
+                <div class="home-article-content markdown-body">
+                    
+                        2022
+
+
+序号
+分类
+作者
+书名
+评级
+
+
+
+01
+财经
+唐朝
+《手把手教你读财报》
+★★★
+
+
+02
+财经
+唐朝
+《价值投资实战手册》
+★★★
+
+
+03
+财经
+雪球
+《看穿十大行业》
+★★★
+
+
+04
+哲学
+罗伯特·赖特
+《洞见》
+★★★
+
+
+...
+                    
+                </div>
+
+                <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fas fa-history"></i>&nbsp;<span class="home-article-date" data-date="Wed Sep 27 2017 12:24:54 GMT+0800">2017-09-27</span></span>
+        
+        
+    </div>
+
+    <a href="/2017/09/27/booklist/">阅读全文&nbsp;<i class="fas fa-angle-right"></i></a>
+</div>
+
+            </li>
+        
+            <li class="home-article-item">
+
+                
+
+                <h3 class="home-article-title">
+                    <a href="/2021/08/12/Moneyview/">
+                        《钱，金钱观》
+                    </a>
+                </h3>
+
+                <div class="home-article-content markdown-body">
+                    
+                        中国人对钱的态度比较极端，一种是膜拜式的阿谀奉承，觉得金钱是生活的全部，肯给钱叫爸爸都行；另一种是故作清高的嗤之以鼻，认为钱财不过是身外之物，多了对生活无益。本文是阅读《小狗钱钱》后的一些感想和新的认知。
+
+故事中的小主人公暂且命名为苏菲
+
+小狗钱钱...
+                    
+                </div>
+
+                <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fas fa-history"></i>&nbsp;<span class="home-article-date" data-date="Thu Aug 12 2021 15:09:36 GMT+0800">2021-08-12</span></span>
+        
+        
+    </div>
+
+    <a href="/2021/08/12/Moneyview/">阅读全文&nbsp;<i class="fas fa-angle-right"></i></a>
+</div>
+
+            </li>
+        
+            <li class="home-article-item">
+
+                
+
+                <h3 class="home-article-title">
+                    <a href="/2020/09/02/behaviorAddicted/">
+                        《行为上瘾》
+                    </a>
+                </h3>
+
+                <div class="home-article-content markdown-body">
+                    
+                        
+本文构思与2020/7/19日，于2020/8/9日动稿，2020/9/2，受不了了，直接结束此稿。
+
+本文结构：
+
+什么是行为上瘾？
+行为上瘾的危害。
+行为上瘾让我们的大脑产生了什么变化？
+为什么会行为上瘾？
+为什么手机让人上瘾？
+为什么游戏让人...
+                    
+                </div>
+
+                <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fas fa-history"></i>&nbsp;<span class="home-article-date" data-date="Wed Sep 02 2020 12:24:54 GMT+0800">2020-09-02</span></span>
+        
+        
+    </div>
+
+    <a href="/2020/09/02/behaviorAddicted/">阅读全文&nbsp;<i class="fas fa-angle-right"></i></a>
+</div>
+
+            </li>
+        
+    </ul>
+
+    <div class="home-paginator">
+        <div class="paginator">
+    
+
+    
+</div>
+
+    </div>
 </div>
 
 
-<div class="hd list">
-    
-    
-        
-           
-            <div class="title_wrapper">
-                <p>
-                    <span style="color: #6d9ee7; user-select: none; ">  公元</span>
-                    <span style="user-select: none; ">2021年 🏷</span>
-                </p>
+                
             </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
             
-        
-
-        <a class="flink fancy" href="/2021/09/27/booklist/">
-            <div class="top-key"></div>
-            <div class="text">
-                <div class="list">
-                    <div class="postname">《年度书单》 </div>
-                    <div class="posttime">2021/09/27</div>
-                </div>
-            </div>
-            <div class="bottom-key-1"></div>
-            <div class="bottom-key-2"></div>
-        </a>
-    
-        
-           
-
-        <a class="flink fancy" href="/2021/08/12/Moneyview/">
-            <div class="top-key"></div>
-            <div class="text">
-                <div class="list">
-                    <div class="postname">《钱，金钱观》 </div>
-                    <div class="posttime">2021/08/12</div>
-                </div>
-            </div>
-            <div class="bottom-key-1"></div>
-            <div class="bottom-key-2"></div>
-        </a>
-    
-        
-           
-            <div class="title_wrapper">
-                <p>
-                    <span style="color: #6d9ee7; user-select: none; ">  公元</span>
-                    <span style="user-select: none; ">2020年 🏷</span>
-                </p>
-            </div>
+              <span>2020</span>
+              -
             
+            2022&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">Zendu</a>
+        </div>
+        
+        <div class="theme-info info-item">
+            由 <a target="_blank" href="https://hexo.io">Hexo</a> 驱动&nbsp;|&nbsp;主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.4.5</a>
+        </div>
+        
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
         
 
-        <a class="flink fancy" href="/2020/09/02/behaviorAddicted/">
-            <div class="top-key"></div>
-            <div class="text">
-                <div class="list">
-                    <div class="postname">《行为上瘾》 </div>
-                    <div class="posttime">2020/09/02</div>
-                </div>
-            </div>
-            <div class="bottom-key-1"></div>
-            <div class="bottom-key-2"></div>
-        </a>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="arrow-up fas fa-arrow-up"></i>
+                <span class="percent"></span>
+            </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+
+</main>
+
+
+
+
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/dark-light-toggle.js"></script>
+
+
+
+
+
+    
+<script src="/js/code-copy.js"></script>
+
+
+
+
+
+<div class="post-scripts">
     
 </div>
 
 
-<div class="footer-wave">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#000" fill-opacity="1" d="M0,224L9.6,240C19.2,256,38,288,58,298.7C76.8,309,96,299,115,250.7C134.4,203,154,117,173,85.3C192,53,211,75,230,69.3C249.6,64,269,32,288,26.7C307.2,21,326,43,346,53.3C364.8,64,384,64,403,96C422.4,128,442,192,461,186.7C480,181,499,107,518,69.3C537.6,32,557,32,576,42.7C595.2,53,614,75,634,112C652.8,149,672,203,691,240C710.4,277,730,299,749,261.3C768,224,787,128,806,96C825.6,64,845,96,864,138.7C883.2,181,902,235,922,250.7C940.8,267,960,245,979,224C998.4,203,1018,181,1037,181.3C1056,181,1075,203,1094,218.7C1113.6,235,1133,245,1152,213.3C1171.2,181,1190,107,1210,96C1228.8,85,1248,139,1267,186.7C1286.4,235,1306,277,1325,261.3C1344,245,1363,171,1382,144C1401.6,117,1421,139,1430,149.3L1440,160L1440,320L1430.4,320C1420.8,320,1402,320,1382,320C1363.2,320,1344,320,1325,320C1305.6,320,1286,320,1267,320C1248,320,1229,320,1210,320C1190.4,320,1171,320,1152,320C1132.8,320,1114,320,1094,320C1075.2,320,1056,320,1037,320C1017.6,320,998,320,979,320C960,320,941,320,922,320C902.4,320,883,320,864,320C844.8,320,826,320,806,320C787.2,320,768,320,749,320C729.6,320,710,320,691,320C672,320,653,320,634,320C614.4,320,595,320,576,320C556.8,320,538,320,518,320C499.2,320,480,320,461,320C441.6,320,422,320,403,320C384,320,365,320,346,320C326.4,320,307,320,288,320C268.8,320,250,320,230,320C211.2,320,192,320,173,320C153.6,320,134,320,115,320C96,320,77,320,58,320C38.4,320,19,320,10,320L0,320Z"></path></svg></div>
-                </body>
 
+</body>
 </html>
-
-<script src="/libs/jquery.min.js"></script>
-
-
-<script src="/libs/highlight/highlight.pack.js"></script>
-
-<!-- <script src='//cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js'></script> -->
-
-<script src="/js/js.js"></script>
-
-
-<script src="/js/menu.js"></script>
