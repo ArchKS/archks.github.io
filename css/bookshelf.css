@@ -1,0 +1,384 @@
+/* ai coding: 为第一款胡桃木书架实现连续木柜、混排书籍和取书弹层 2026/11/16: 17:30 */
+.tool-bookshelf-toggle {
+    right: 106px;
+    padding: 0;
+    border: 0;
+    font: inherit;
+}
+.tool-bookshelf-toggle[hidden], .read-bookshelf[hidden] { display: none !important; }
+.tool-bookshelf-toggle:hover { transform: translateY(-1px); }
+.tool-bookshelf-toggle[aria-pressed="true"] { color: #f7edd8; background: #65442c; }
+.tool-bookshelf-toggle:focus-visible { outline: 2px solid #a97b42; outline-offset: 3px; }
+.bookshelf-view .article-content, .bookshelf-view #book-merge-container,
+.bookshelf-view .article-title, .bookshelf-view .article-meta-info { display: none !important; }
+.bookshelf-view .page-container .page-main-content .page-main-content-middle .main-content {
+    width: calc(100% - 64px);
+    max-width: 1260px;
+    padding: 0;
+    background: transparent;
+    box-shadow: none;
+}
+
+/* ai coding: 将评级和三档排列并列显示，手机自动换行并统一选中状态与明暗样式 2026/11/17: 09:57 */
+.shelf-controls {
+    position: sticky;
+    top: 10px;
+    z-index: 8;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 10px;
+    width: fit-content;
+    max-width: calc(100% - 24px);
+    margin: 35px auto -20px;
+}
+.shelf-rating-controls, .shelf-density-controls {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 4px;
+    max-width: 100%;
+    box-sizing: border-box;
+    padding: 5px;
+    border-radius: 24px;
+    background: #f6f2e9f2;
+    box-shadow: 0 2px 10px #20130720;
+}
+.shelf-controls[hidden], .shelf-rating-controls[hidden] { display: none !important; }
+.shelf-rating-choice, .shelf-density-choice {
+    padding: 8px 10px;
+    border: 0;
+    border-radius: 18px;
+    background: transparent;
+    color: #6a5239;
+    font: inherit;
+    font-size: 13px;
+    line-height: 1.2;
+    letter-spacing: 1px;
+    cursor: pointer;
+}
+.shelf-rating-choice[aria-pressed="true"], .shelf-density-choice[aria-pressed="true"] { background: #65442c; color: #f7edd8; }
+.shelf-rating-choice:focus-visible, .shelf-density-choice:focus-visible { outline: 2px solid #a97b42; outline-offset: 2px; }
+.dark-mode .shelf-rating-controls, .dark-mode .shelf-density-controls { background: #302821f2; }
+.dark-mode .shelf-rating-choice, .dark-mode .shelf-density-choice { color: #e4d4bc; }
+
+/* ai coding: 使用真实木纹和层板进深构成一个完整书柜 2026/11/16: 17:30 */
+.read-bookshelf {
+    --wood: url("../img/bookshelf/walnut.webp");
+    --wood-vertical: url("../img/bookshelf/walnut-vertical.webp");
+    position: relative;
+    isolation: isolate;
+    margin: 42px auto 30px;
+    padding: 27px 29px 30px;
+    border: 1px solid #3b2418;
+    border-radius: 2px;
+    background: #66442d var(--wood) center / 980px auto;
+    box-shadow: 14px 20px 35px #20130735, 0 2px 4px #20130750,
+        inset 1px 1px 0 #d9ba8b70, inset -2px -2px 3px #27180caf;
+}
+.read-bookshelf::before, .read-bookshelf::after {
+    content: "";
+    position: absolute;
+    z-index: 4;
+    top: 18px;
+    bottom: 22px;
+    width: 20px;
+    background: #704c30 var(--wood-vertical) center / auto 860px;
+    box-shadow: inset 1px 0 0 #d9ba8b75, inset -2px 0 0 #2d1a1490, 2px 0 4px #160d0760;
+    pointer-events: none;
+}
+.read-bookshelf::before { left: 7px; }
+.read-bookshelf::after { right: 7px; box-shadow: inset 1px 0 0 #d9ba8b50, inset -2px 0 0 #2d1a1490, -2px 0 4px #160d0760; }
+.shelf-crown, .shelf-plinth {
+    position: absolute;
+    z-index: 5;
+    left: -6px;
+    right: -6px;
+    height: 20px;
+    background: #634129 var(--wood) left center / 1100px auto;
+    box-shadow: inset 0 1px 0 #c1a375b0, inset 0 -2px 2px #28180ed0, 0 4px 6px #20130750;
+}
+.shelf-crown { top: 5px; }
+.shelf-plinth { bottom: 6px; left: 0; right: 0; height: 23px; }
+.shelf-cavity {
+    position: relative;
+    background-image: linear-gradient(180deg, #100903a6 0, #10090335 28px, #10090310 70%, #10090370),
+        linear-gradient(90deg, #140b0455, transparent 9%, transparent 92%, #140b0445), var(--wood-vertical);
+    background-size: auto, auto, 790px 900px;
+    box-shadow: inset 8px 0 11px #120a0440, inset -7px 0 11px #120a0440;
+}
+.shelf-cavity::before {
+    content: "";
+    position: absolute;
+    z-index: 1;
+    left: 0;
+    right: 0;
+    bottom: 22px;
+    height: 24px;
+    background-image: linear-gradient(180deg, #160b0375, #a3784330), var(--wood);
+    background-size: auto, 1000px auto;
+    box-shadow: inset 0 1px 1px #b8936455;
+}
+.shelf-cavity::after {
+    content: "";
+    position: absolute;
+    z-index: 3;
+    bottom: 0;
+    left: -3px;
+    right: -3px;
+    height: 24px;
+    background: #69472c var(--wood) left center / 1150px auto;
+    border-top: 1px solid #be976a8a;
+    border-bottom: 3px solid #352016;
+    box-shadow: inset 0 -3px 3px #1d0f0655, 0 7px 9px #150a0670;
+    pointer-events: none;
+}
+/* ai coding: 层板间距跟随排列档位，避免视觉空隙与实际换层计算不一致 2026/11/17: 09:57 */
+.shelf-items {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: flex-end;
+    gap: var(--shelf-gap, 24px);
+    min-height: 225px;
+    box-sizing: border-box;
+    padding: 23px 18px 33px;
+}
+.shelf-group { display: flex; flex: 0 0 auto; align-items: flex-end; }
+.shelf-group--standing { gap: 3px; }
+.shelf-group--lean { gap: 2px; }
+.shelf-lean-slot { display: block; position: relative; flex: none; }
+.shelf-lean-slot .shelf-book { position: absolute; right: 0; bottom: 0; }
+.shelf-group--stack { flex-direction: column-reverse; align-items: flex-start; gap: 3px; padding-right: 8px; }
+.shelf-group--stack .shelf-book:nth-child(even) { margin-left: 6px; }
+
+/* ai coding: 正常缩小直立书间距，紧凑竖排书脊填满完整层板并保留真实高度 2026/11/17: 09:57 */
+.read-bookshelf[data-density="normal"] .shelf-items { padding-top: 16px; }
+.read-bookshelf[data-density="normal"] .shelf-group--standing { gap: 2px; }
+.read-bookshelf[data-density="compact"] .shelf-items { padding-top: 12px; }
+.read-bookshelf[data-density="compact"] .shelf-items--filled .shelf-group { flex-grow: 1; }
+.read-bookshelf[data-density="compact"] .shelf-book { width: 100%; }
+
+/* ai coding: 为书籍加入装订边、纸页、斜靠角度和横放书堆的真实层次 2026/11/16: 17:30 */
+.shelf-book {
+    position: relative;
+    display: block;
+    flex: none;
+    width: var(--book-depth);
+    height: var(--book-height);
+    margin: 0;
+    padding: 0;
+    border: 0;
+    border-radius: 1px;
+    background: none;
+    color: var(--book-ink);
+    font: inherit;
+    line-height: 1;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+}
+.shelf-book--cover { width: calc(var(--book-width) + 8px); }
+.book-object {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: 2px 1px 1px 2px;
+    color: var(--book-ink);
+    background: var(--book-color);
+    transform: translate3d(0, 0, 0) rotate(var(--lean-angle, 0deg));
+    transform-origin: bottom left;
+    transition: transform 200ms ease, filter 200ms ease, opacity 180ms ease;
+    box-shadow: -3px 2px 5px #09050375, 7px 5px 9px #130b0790,
+        inset 2px 0 2px #fff4d930, inset -2px 0 3px #10080055;
+}
+.book-object::before {
+    content: "";
+    position: absolute;
+    z-index: 2;
+    inset: 0;
+    border-radius: inherit;
+    background: linear-gradient(90deg, #0c060429, #ffffff10 13%, transparent 26%, transparent 83%, #08040238);
+    box-shadow: inset 0 1px 0 #fff3d64d, inset 0 -1px 0 #150b0680;
+    pointer-events: none;
+}
+.book-object::after {
+    content: "";
+    position: absolute;
+    top: -2px;
+    left: 3px;
+    right: 1px;
+    height: 2px;
+    background: repeating-linear-gradient(0deg, #c4b89e 0, #eee4ca 1px, #a3977f 2px);
+    pointer-events: none;
+}
+.book-cover { position: absolute; inset: 0 0 0 7px; display: block; overflow: hidden; background: var(--book-color); }
+.shelf-book .book-cover-image, .book-real-spine {
+    display: block;
+    width: 100%;
+    height: 100%;
+    margin: 0 !important;
+    border: 0;
+    border-radius: 0;
+    object-fit: fill;
+    box-shadow: none;
+}
+.book-cover-fallback { display: none; }
+.cover-missing .book-cover-fallback {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 160px;
+    height: 100%;
+    padding: 12px;
+    box-sizing: border-box;
+    font: 20px/1.6 "Songti SC", STSong, serif;
+    color: var(--book-ink, #48382a);
+}
+.spine-lettering {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 4px 10px;
+    overflow: hidden;
+    box-sizing: border-box;
+    font-family: "Songti SC", STSong, serif;
+}
+.spine-title {
+    display: block;
+    max-height: calc(var(--book-height) - 52px);
+    writing-mode: vertical-rl;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 14px;
+    letter-spacing: 1.2px;
+    text-shadow: 0 1px 1px #00000025;
+}
+.spine-author { font-size: 8px; writing-mode: vertical-rl; max-height: 35px; overflow: hidden; opacity: 0.85; letter-spacing: 0.6px; }
+.shelf-book--flat { width: var(--flat-length); height: var(--flat-height); }
+.shelf-book--flat .book-object { border-radius: 2px; box-shadow: 2px 3px 4px #150a0780, inset 0 1px 0 #fff5dc4d; }
+.shelf-book--flat .book-object::after { top: auto; bottom: 2px; right: 2px; left: auto; width: 5px; height: calc(100% - 4px); background: repeating-linear-gradient(0deg, #efe3c4 0 1px, #c5b497 1px 2px); }
+/* ai coding: 保留横放书籍的竖排书脊，将文字整体随书旋转90度 2026/11/17: 08:50 */
+.shelf-book--flat .spine-lettering {
+    inset: auto;
+    top: var(--flat-height);
+    left: 0;
+    width: var(--flat-height);
+    height: var(--flat-length);
+    justify-content: center;
+    padding: 10px 4px 12px;
+    transform: rotate(-90deg);
+    transform-origin: top left;
+}
+.shelf-book--flat .spine-title {
+    writing-mode: vertical-rl;
+    max-height: calc(var(--flat-length) - 22px);
+    font-size: 12px;
+    line-height: 1;
+    letter-spacing: 0.4px;
+}
+.flat-cover {
+    position: absolute;
+    z-index: -1;
+    left: 2px;
+    right: -2px;
+    top: -5px;
+    height: 6px;
+    background-position: center 12%;
+    background-size: cover;
+    transform: skewX(-18deg);
+    filter: brightness(0.8);
+    border-top: 1px solid #e2d2b040;
+}
+@media (hover: hover) {
+    .shelf-book:hover { z-index: 6; }
+    .shelf-book:hover .book-object { transform: translate3d(0, -5px, 10px) rotate(var(--lean-angle, 0deg)); filter: brightness(1.07); }
+}
+.shelf-book:focus-visible { z-index: 6; outline: 2px solid #f9e8ba; outline-offset: 4px; }
+.shelf-book:focus-visible .book-object { transform: translate3d(0, -5px, 10px) rotate(var(--lean-angle, 0deg)); }
+.shelf-book.is-taken .book-object { opacity: 0; }
+
+/* ai coding: 用单层纸张弹窗呈现封面与原始阅读记录，兼容触屏和减少动态效果偏好 2026/11/16: 17:30 */
+.shelf-book-open { overflow: hidden; }
+.shelf-book-dialog {
+    max-width: min(760px, calc(100vw - 36px));
+    max-height: calc(100dvh - 48px);
+    width: 760px;
+    padding: 0;
+    border: 0;
+    overflow: auto;
+    background: transparent;
+    color: #332b23;
+    box-shadow: 0 24px 90px #08050370;
+    animation: shelf-take-book 220ms ease-out;
+}
+.shelf-book-dialog::backdrop { background: #1810089e; backdrop-filter: blur(3px); }
+.shelf-book-paper {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(180px, 0.85fr) minmax(220px, 1fr);
+    align-items: start;
+    gap: 36px;
+    padding: 40px;
+    background: #f4efdf;
+    background-image: repeating-linear-gradient(0deg, #87765205 0 1px, transparent 1px 3px);
+    box-shadow: inset 0 0 40px #bdb09620;
+}
+.shelf-dialog-close {
+    position: absolute;
+    z-index: 2;
+    top: 8px;
+    right: 8px;
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: #574737;
+    font: 28px/1 sans-serif;
+    cursor: pointer;
+}
+.shelf-dialog-close:focus-visible { outline: 2px solid #7d5932; outline-offset: -3px; }
+.shelf-dialog-cover { min-height: 190px; background: #e4dbc6; box-shadow: -4px 3px 0 #6b5b4290, 8px 12px 18px #3e2c1c40; }
+.shelf-dialog-cover img { display: block; width: 100%; height: auto; margin: 0; border-radius: 0; }
+.shelf-book-detail h2 { margin: 0 0 14px; color: #30271e; font: 26px/1.45 "Songti SC", STSong, serif; }
+.shelf-detail-author { margin: 0 0 16px; font-size: 15px; line-height: 1.6; }
+.shelf-detail-rating { margin: 0 0 28px; color: #947134; letter-spacing: 3px; font-size: 17px; }
+.shelf-detail-facts { display: grid; grid-template-columns: 66px 1fr; gap: 14px 14px; margin: 0; font-size: 13px; line-height: 1.65; }
+.shelf-detail-facts dt { color: #89765e; }
+.shelf-detail-facts dd { margin: 0; overflow-wrap: anywhere; }
+/* ai coding: 将同书的多次阅读以年份和原始评级直接排列，避免重复封面 2026/11/17: 08:59 */
+.shelf-reading-record + .shelf-reading-record { margin-top: 26px; padding-top: 24px; border-top: 1px solid #d8cdb8; }
+.shelf-reading-heading { margin: 0 0 18px; color: #947134; font-size: 15px; letter-spacing: 1px; }
+@keyframes shelf-take-book { from { opacity: 0; transform: translateY(15px) scale(0.96); } to { opacity: 1; transform: none; } }
+/* ai coding: 手机排列控件避开顶部悬浮按钮，并让层板空隙遵循当前密度 2026/11/17: 09:57 */
+@media (max-width: 768px) {
+    .shelf-controls { top: 54px; }
+    .tool-bookshelf-toggle { top: 14px; right: 90px; width: 30px; height: 30px; }
+    .bookshelf-view .page-container .page-main-content .page-main-content-middle .main-content { width: calc(100% - 28px); max-width: none !important; }
+    .read-bookshelf { margin-top: 50px; padding: 25px 21px 27px; }
+    .read-bookshelf::before, .read-bookshelf::after { width: 14px; left: 5px; }
+    .read-bookshelf::after { left: auto; right: 5px; }
+}
+@media (max-width: 600px) {
+    .shelf-items { padding-right: 18px; padding-left: 18px; min-height: 226px; }
+    .shelf-book-dialog { max-width: calc(100vw - 24px); max-height: calc(100dvh - 32px); }
+    .shelf-book-paper { grid-template-columns: 1fr; justify-items: center; gap: 28px; padding: 38px 26px 28px; }
+    .shelf-dialog-cover { width: min(190px, 70vw); }
+    .shelf-book-detail { width: 100%; }
+    .shelf-book-detail h2 { font-size: 23px; }
+}
+/* ai coding: 缩减最窄手机层板的左右空隙，确保横放书堆完整落在层板内 2026/11/16: 17:36 */
+@media (max-width: 360px) {
+    .shelf-items { padding-left: 14px; padding-right: 14px; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .book-object, .tool-bookshelf-toggle { transition: none; }
+    .shelf-book-dialog { animation: none; }
+}
